@@ -1,0 +1,6 @@
+google_maps: 'Карты Google'
+client_key: 'Client key'
+client_key_setup_help: 'Получите свой <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">client key</a> и скопируйте его в это поле'
+server_key: 'Server key'
+server_key_setup_help: 'Получите свой <a target="_blank" href="https://developers.google.com/maps/documentation/geocoding/get-api-key">server key</a> и скопируйте его в это поле'
+plugin_setup_required_warning: 'Необходимо <a href="{:google_maps_admin_settings_url}">настроить плагин Карты Google</a>'

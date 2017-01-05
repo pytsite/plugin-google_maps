@@ -1,0 +1,17 @@
+{
+  "description": {
+    "en": "Google Maps",
+    "ru": "Карты Google",
+    "uk": "Карти Google"
+  },
+  "url": "https://github.com/pytsite/plugin-google_maps",
+  "author": {
+    "name": "Alexander Shepetko",
+    "email": "a@shepetko.com",
+    "url": "https://shepetko.com"
+  },
+  "requires": {
+    "packages": [],
+    "plugins": []
+  }
+}
