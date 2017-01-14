@@ -1,7 +1,7 @@
 """ PytSite Google Maps GeoCoding API.
 """
 import requests as _requests
-from pytsite import geo as _geo, lang as _lang, settings as _settings
+from pytsite import geo as _geo, lang as _lang, settings as _settings, reg as _reg
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -11,7 +11,7 @@ __license__ = 'MIT'
 class GeoCoder(_geo.interface.GeoCoder):
     def __init__(self):
         # Google Map API key is required
-        self._api_key = _settings.get('google_maps.server_key')
+        self._api_key = _settings.get('google_maps.server_key') or _reg.get('google_maps.server_key')
         if not self._api_key:
             raise RuntimeError("Setting 'google_maps.server_key' is not defined.")
 

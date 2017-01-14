@@ -1,6 +1,6 @@
 """PytSite Google Maps Plugin Event Handlers.
 """
-from pytsite import auth as _auth, lang as _lang, router as _router, settings as _settings
+from pytsite import auth as _auth, lang as _lang, router as _router, settings as _settings, reg as _reg
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -12,7 +12,7 @@ def router_dispatch():
     """
     if _auth.get_current_user().has_permission('google_maps.settings.manage'):
         msg = _lang.t('google_maps@plugin_setup_required_warning')
-        if not _settings.get('google_maps.client_key') or not _settings.get('google_maps.server_key'):
+        if not (_settings.get('google_maps.client_key') or _reg.get('google_maps.client_key')):
             _router.session().add_warning_message(msg)
         else:
             _router.session().get_warning_message(msg)

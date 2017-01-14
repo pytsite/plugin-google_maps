@@ -4,7 +4,7 @@ from typing import Union as _Union
 from copy import deepcopy as _deepcopy
 from json import dumps as _json_dumps, loads as _json_loads
 from frozendict import frozendict as _frozendict
-from pytsite import widget as _pytsite_widget, browser as _browser, html as _html, geo as _geo, \
+from pytsite import widget as _pytsite_widget, browser as _browser, html as _html, geo as _geo, reg as _reg, \
     validation as _validation, router as _router, settings as _settings
 from . import _api
 
@@ -133,7 +133,7 @@ class StaticMap(_pytsite_widget.Abstract):
 
     def __init__(self, uid: str, **kwargs):
         # Google Map API key is required
-        self._api_key = _settings.get('google_maps.client_key')
+        self._api_key = _settings.get('google_maps.client_key') or _reg.get('google_maps.client_key')
         if not self._api_key:
             raise RuntimeError("Setting 'google_maps.client_key' is not defined.")
 

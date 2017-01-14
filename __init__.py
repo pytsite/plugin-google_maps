@@ -9,10 +9,10 @@ __license__ = 'MIT'
 
 
 def _browser_library_maps() -> list:
-    from pytsite import settings, lang, router
+    from pytsite import settings, lang, router, reg
 
     # Google Map API key is required
-    api_key = settings.get('google_maps.client_key')
+    api_key = settings.get('google_maps.client_key') or reg.get('google_maps.client_key')
     if not api_key:
         raise RuntimeError("Setting 'google_maps.client_key' is not defined.")
 

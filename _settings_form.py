@@ -1,6 +1,6 @@
 """PytSite Google Maps Plugin Settings Form.
 """
-from pytsite import widget as _widget, lang as _lang, settings as _settings
+from pytsite import widget as _widget, lang as _lang, settings as _settings, reg as _reg
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -17,6 +17,7 @@ class Form(_settings.Form):
             label=_lang.t('google_maps@client_key'),
             required=True,
             help=_lang.t('google_maps@client_key_setup_help'),
+            default=_reg.get('google_maps.client_key'),
         ))
 
         self.add_widget(_widget.input.Text(
@@ -25,6 +26,7 @@ class Form(_settings.Form):
             label=_lang.t('google_maps@server_key'),
             required=True,
             help=_lang.t('google_maps@server_key_setup_help'),
+            default=_reg.get('google_maps.server_key'),
         ))
 
         super()._on_setup_widgets()
