@@ -18,13 +18,16 @@ window.pytsiteGoogleMap = function (mapNode, options) {
         mapNode = mapNode[0];
 
     // Options
+    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions
     self.options = {
-        // https://developers.google.com/maps/documentation/javascript/controls
+        // Google options
         center: new google.maps.LatLng(50.45, 30.52),
         zoom: 18,
+        gestureHandling: 'cooperative',
+        scrollwheel: false,
 
         // PytSite specific options
-        mapCenterControl: true,
+        mapCenterControl: false,
         mapCenterControlOptions: {
             position: google.maps.ControlPosition.RIGHT_TOP
         },

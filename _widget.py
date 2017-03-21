@@ -114,7 +114,7 @@ class AddressInput(_pytsite_widget.Abstract):
         address_components = _json_dumps(self.value['address_components'])
 
         inputs = _html.TagLessElement()
-        inputs.append(_html.Input(type='text', name=self._uid + '[search]', cls='form-control', value=address))
+        inputs.append(_html.Input(type='text', name=self._uid + '[search]', css='form-control', value=address))
         inputs.append(_html.Input(type='hidden', name=self._uid + '[lng]', value=lng))
         inputs.append(_html.Input(type='hidden', name=self._uid + '[lat]', value=lat))
         inputs.append(_html.Input(type='hidden', name=self._uid + '[address]', value=address))
@@ -146,12 +146,12 @@ class StaticMap(_pytsite_widget.Abstract):
         self._markers = kwargs.get('markers', [])
         self._linked = kwargs.get('linked', True)
         self._link_target = kwargs.get('link_target', '_blank')
-        self._img_cls = kwargs.get('img_cls', 'img-responsive')
+        self._img_css = kwargs.get('img_css', 'img-responsive')
 
         self.assets.append('google_maps@js/widget/static-map.js')
 
     def _get_element(self, **kwargs):
-        self._data['img_class'] = self._img_cls
+        self._data['img_class'] = self._img_css
 
         self._data['img_url'] = _router.url('https://maps.googleapis.com/maps/api/staticmap', query={
             'center': '{},{}'.format(self._lat, self._lng),
