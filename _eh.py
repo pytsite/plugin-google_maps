@@ -11,8 +11,5 @@ def router_dispatch():
     """'pytsite.router.dispatch' event handler.
     """
     if _auth.get_current_user().has_permission('google_maps.settings.manage'):
-        msg = _lang.t('google_maps@plugin_setup_required_warning')
         if not (_settings.get('google_maps.client_key') or _reg.get('google_maps.client_key')):
-            _router.session().add_warning_message(msg)
-        else:
-            _router.session().get_warning_message(msg)
+            _router.session().add_warning_message(_lang.t('google_maps@plugin_setup_required_warning'))

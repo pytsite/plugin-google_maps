@@ -31,7 +31,7 @@ def _browser_library_maps() -> list:
 
 
 def _init():
-    from pytsite import lang, assetman, tpl, permissions, settings, browser, events
+    from pytsite import lang, assetman, tpl, permissions, settings, browser, router
     from . import _settings_form, _eh
 
     # Resources
@@ -49,7 +49,7 @@ def _init():
                     'google_maps.settings.manage')
 
     # Event handlers
-    events.listen('pytsite.router.dispatch', _eh.router_dispatch)
+    router.on_dispatch(_eh.router_dispatch)
 
 
 _init()
