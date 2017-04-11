@@ -1,42 +1,41 @@
-""" PytSite Google Maps GeoCoding API.
+""" PytSite Google Maps Plugin GeoCoding
 """
 import requests as _requests
-from pytsite import geo as _geo, lang as _lang, settings as _settings, reg as _reg
+from pytsite import lang as _lang
+from . import _helpers, _point
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
+_GOOGLE_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
 
-class GeoCoder(_geo.interface.GeoCoder):
-    def __init__(self):
-        # Google Map API key is required
-        self._api_key = _settings.get('google_maps.server_key') or _reg.get('google_maps.server_key')
-        if not self._api_key:
-            raise RuntimeError("Setting 'google_maps.server_key' is not defined.")
 
-    def encode(self, address: str, **kwargs):
-        r = _requests.get('https://maps.googleapis.com/maps/api/geocode/json', {
-            'key': self._api_key,
-            'language': _lang.get_current(),
-            'address': address,
-        }).json()['results']
+def encode(address: _point.Address, **kwargs):
+    """Encode an address.
+    """
+    r = _requests.get(_GOOGLE_API_URL, {
+        'key': _helpers.get_google_api_key(),
+        'language': _lang.get_current(),
+        'address': address.address,
+    }).json()['results']
 
-        if kwargs.get('first', True):
-            return r[0] if r else None
+    if kwargs.get('first', True):
+        return r[0] if r else None
 
-        return r
+    return r
 
-    def decode(self, lng: float, lat: float, **kwargs):
-        r = _requests.get('https://maps.googleapis.com/maps/api/geocode/json', {
-            'key': self._api_key,
-            'language': _lang.get_current(),
-            'latlng': '{},{}'.format(lat, lng),
-            # 'location_type': kwargs.get('location_type', 'ROOFTOP'),
-            # 'result_type': kwargs.get('result_type', 'street_address'),
-        }).json()['results']
 
-        if kwargs.get('first', True):
-            return r[0] if r else None
+def decode(location: _point.LatLng, first: bool = False):
+    """Decode a location.
+    """
+    r = _requests.get(_GOOGLE_API_URL, {
+        'key': _helpers.get_google_api_key(),
+        'language': _lang.get_current(),
+        'latlng': '{},{}'.format(location.lat, location.lng),
+    }).json()['results']
 
-        return r
+    if first:
+        return r[0] if r else None
+
+    return r

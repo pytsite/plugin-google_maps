@@ -1,4 +1,4 @@
-"""PytSite Google Maps Plugin Settings Form.
+"""PytSite Google Maps Plugin Settings Form
 """
 from pytsite import widget as _widget, lang as _lang, settings as _settings, reg as _reg
 

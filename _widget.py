@@ -4,9 +4,9 @@ from typing import Union as _Union
 from copy import deepcopy as _deepcopy
 from json import dumps as _json_dumps, loads as _json_loads
 from frozendict import frozendict as _frozendict
-from pytsite import widget as _pytsite_widget, browser as _browser, html as _html, geo as _geo, reg as _reg, \
-    validation as _validation, router as _router, settings as _settings
-from . import _api
+from pytsite import widget as _pytsite_widget, browser as _browser, html as _html, geo as _geo, router as _router, \
+    validation as _validation
+from . import _point, _maps, _helpers
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -132,15 +132,9 @@ class StaticMap(_pytsite_widget.Abstract):
     """
 
     def __init__(self, uid: str, **kwargs):
-        # Google Map API key is required
-        self._api_key = _settings.get('google_maps.client_key') or _reg.get('google_maps.client_key')
-        if not self._api_key:
-            raise RuntimeError("Setting 'google_maps.client_key' is not defined.")
-
         super().__init__(uid, **kwargs)
 
-        self._lng = kwargs.get('lng', 30.5234)
-        self._lat = kwargs.get('lat', 50.4501)
+        self._point = _point.LatLng(kwargs.get('lat', 50.4501), kwargs.get('lng', 30.5234))
         self._zoom = kwargs.get('zoom', 15)
         self._scale = kwargs.get('scale', 1)
         self._markers = kwargs.get('markers', [])
@@ -154,15 +148,15 @@ class StaticMap(_pytsite_widget.Abstract):
         self._data['img_class'] = self._img_css
 
         self._data['img_url'] = _router.url('https://maps.googleapis.com/maps/api/staticmap', query={
-            'center': '{},{}'.format(self._lat, self._lng),
+            'center': '{},{}'.format(self._point.lat, self._point.lng),
             'zoom': self._zoom,
             'scale': self._scale,
             'markers': '|'.join(x for x in self._markers),
-            'key': self._api_key,
+            'key': _helpers.get_google_api_key(),
         })
 
         if self._linked:
-            self._data['link'] = _api.map_link(self._lng, self._lat, zoom=self._zoom)
+            self._data['link'] = _maps.link(self._point, zoom=self._zoom)
             self._data['link_target'] = self._link_target
 
         return _html.TagLessElement()

@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.2 (2017-04-11)
+- Refactored.
+- Added basic distance matrix support.
+
+
 ### 0.1.5 (2017-03-30)
 Fixed notifications. 
 
