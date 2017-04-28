@@ -28,15 +28,20 @@ def _browser_library_maps() -> list:
 
 
 def _init():
-    from pytsite import lang, assetman, tpl, permissions, settings, browser, router
+    from pytsite import lang, assetman, tpl, permissions, settings, router
     from . import _settings_form, _eh
 
     # Resources
     lang.register_package(__name__, alias='google_maps')
     lang.register_global('google_maps_admin_settings_url', lambda language, args: settings.form_url('google_maps'))
     tpl.register_global('google_maps_map_link', maps.link)
+
     assetman.register_package(__name__, alias='google_maps')
-    browser.register('google-maps', _browser_library_maps)
+    assetman.js_module('google-maps', __name__ + '@js/google-maps')
+    assetman.js_module('google-maps-widget-address-input', __name__ + '@js/google-maps-widget-address-input')
+    assetman.js_module('google-maps-widget-static-map', __name__ + '@js/google-maps-widget-static-map')
+    assetman.t_less(__name__ + '@css/**', 'css')
+    assetman.t_js(__name__ + '@js/**', 'js')
 
     # Permissions
     permissions.define_permission('google_maps.settings.manage', 'google_maps@manage_google_maps_settings', 'app')

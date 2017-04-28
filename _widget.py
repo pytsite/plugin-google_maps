@@ -4,8 +4,7 @@ from typing import Union as _Union
 from copy import deepcopy as _deepcopy
 from json import dumps as _json_dumps, loads as _json_loads
 from frozendict import frozendict as _frozendict
-from pytsite import widget as _pytsite_widget, browser as _browser, html as _html, geo as _geo, router as _router, \
-    validation as _validation
+from pytsite import widget as _pytsite_widget, html as _html, geo as _geo, router as _router, validation as _validation
 from . import _point, _maps, _helpers
 
 __author__ = 'Alexander Shepetko'
@@ -30,15 +29,9 @@ class AddressInput(_pytsite_widget.Abstract):
 
         super().__init__(uid, **kwargs)
 
-        # Geo based auto detection
         self._autodetect = kwargs.get('autodetect', False)
-
-        # CSS
         self._css += ' widget-google-address-input'
-
-        # Assets
-        self.assets.extend(_browser.get_assets('google-maps'))
-        self.assets.append('google_maps@js/widget/address-input.js')
+        self._js_module = 'google-maps-widget-address-input'
 
         # Validation rule for 'required' widget
         if self._required:
@@ -104,7 +97,7 @@ class AddressInput(_pytsite_widget.Abstract):
         """
         return super().get_val(**kwargs) or _deepcopy(self._default)
 
-    def _get_element(self, **kwargs) -> str:
+    def _get_element(self, **kwargs) -> _html.Element:
         """Render the widget.
         :param **kwargs:
         """
@@ -141,8 +134,7 @@ class StaticMap(_pytsite_widget.Abstract):
         self._linked = kwargs.get('linked', True)
         self._link_target = kwargs.get('link_target', '_blank')
         self._img_css = kwargs.get('img_css', 'img-responsive')
-
-        self.assets.append('google_maps@js/widget/static-map.js')
+        self._js_module = 'google-maps-widget-static-map'
 
     def _get_element(self, **kwargs):
         self._data['img_class'] = self._img_css
