@@ -287,6 +287,7 @@ require(['assetman'], function (assetman) {
     window.pytsiteGoogleMapsReady = false;
 
     window.pytsiteGoogleMapsInit = function () {
+        assetman.loadCSS('google_maps@css/google-maps.css');
         assetman.loadJS('google_maps@js/google-maps-InfoBox.min.js');
         assetman.loadJS('google_maps@js/google-maps-MarkerWithLabel.min.js');
         assetman.loadJS('google_maps@js/google-maps-RichMarker.min.js');

@@ -4,6 +4,10 @@
 ## Changelog
 
 
+### 0.3.1 (2017-05-01)
+Fixed load of CSS asset.
+
+
 ### 0.3 (2017-04-28)
 Support for latest PytSite asset management changes.
 
