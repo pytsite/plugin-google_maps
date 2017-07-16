@@ -4,8 +4,12 @@
 ## Changelog
 
 
+### 0.3.2 (2017-07-16)
+Fixed JS initialization code.
+
+
 ### 0.3.1 (2017-05-01)
-Fixed load of CSS asset.
+Fixed CSS asset loading.
 
 
 ### 0.3 (2017-04-28)

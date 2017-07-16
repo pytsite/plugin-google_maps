@@ -15,7 +15,6 @@ class Form(_settings.Form):
             uid='setting_client_key',
             weight=10,
             label=_lang.t('google_maps@client_key'),
-            required=True,
             help=_lang.t('google_maps@client_key_setup_help'),
             default=_reg.get('google_maps.client_key'),
         ))
@@ -24,7 +23,6 @@ class Form(_settings.Form):
             uid='setting_server_key',
             weight=20,
             label=_lang.t('google_maps@server_key'),
-            required=True,
             help=_lang.t('google_maps@server_key_setup_help'),
             default=_reg.get('google_maps.server_key'),
         ))
