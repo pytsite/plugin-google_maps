@@ -4,6 +4,10 @@
 ## Changelog
 
 
+### 0.3.3 (2017-08-27)
+`plugin.json` updated.
+
+
 ### 0.3.2 (2017-07-16)
 Fixed JS initialization code.
 
