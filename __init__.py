@@ -1,7 +1,7 @@
-"""PytSite Google Maps Plugin.
+"""PytSite Google Maps Plugin
 """
 from . import _widget as widget, _point as point, _travel_mode as travel_mode, _maps as maps, _geocoding as geocoding, \
-    _distance as distance, _errors as errors
+    _distance as distance, _error as error
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -33,6 +33,7 @@ def _init():
 
     # Resources
     lang.register_package(__name__, alias='google_maps')
+    lang.register_global('google_maps_admin_settings_url', lambda language, args: settings.form_url('google_maps'))
     tpl.register_global('google_maps_map_link', maps.link)
 
     assetman.register_package(__name__, alias='google_maps')
@@ -51,7 +52,7 @@ def _init():
                     'google_maps.settings.manage')
 
     # Event handlers
-    router.on_dispatch(_eh.router_dispatch)
+    router.on_dispatch(_eh.on_router_dispatch)
 
 
 _init()

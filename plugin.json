@@ -1,6 +1,6 @@
 {
-  "name": "plugins.google_maps",
-  "version": "0.3.3",
+  "name": "google_maps",
+  "version": "0.3.4",
   "description": {
     "en": "Google Maps",
     "ru": "Карты Google",

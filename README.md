@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.3.4 (2017-09-06)
+- Fixed geo coding/decoding errors handling.
+- Added setup notification message.
+
+
 ### 0.3.3 (2017-08-27)
 `plugin.json` updated.
 

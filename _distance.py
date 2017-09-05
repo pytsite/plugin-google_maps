@@ -2,7 +2,7 @@
 """
 import requests as _requests
 from pytsite import lang as _lang, cache as _cache, util as _util
-from . import _helpers, _point, _travel_mode, _errors
+from . import _helpers, _point, _travel_mode, _error
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -39,19 +39,19 @@ def calculate(origin: _point.Point, destination: _point.Point, mode: str = _trav
     })
 
     if not r.ok:
-        raise _errors.GoogleApiResponseError('Response code from Google: {}'.format(r.status_code))
+        raise _error.GoogleApiError('Response code from Google: {}'.format(r.status_code))
 
     r = r.json()
 
     # Check search response status
     if r['status'] != 'OK':
-        raise _errors.DistanceCalculationError('Calculation status from Google:'.format(r['status']))
+        raise _error.DistanceCalculationError('Calculation status from Google:'.format(r['status']))
 
     # Check item status
     em = r['rows'][0]['elements'][0]
 
     if em['status'] != 'OK':
-        raise _errors.DistanceCalculationError('Calculation status from Google:'.format(em['status']))
+        raise _error.DistanceCalculationError('Calculation status from Google:'.format(em['status']))
 
     response = {
         'origin_address': r['origin_addresses'][0],

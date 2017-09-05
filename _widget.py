@@ -1,4 +1,4 @@
-"""PytSite Google Maps Plugin Widgets.
+"""PytSite Google Maps Plugin Widgets
 """
 from typing import Union as _Union
 from copy import deepcopy as _deepcopy

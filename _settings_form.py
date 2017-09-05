@@ -12,19 +12,11 @@ class Form(_settings.Form):
         """Hook.
         """
         self.add_widget(_widget.input.Text(
-            uid='setting_client_key',
+            uid='setting_api_key',
             weight=10,
-            label=_lang.t('google_maps@client_key'),
-            help=_lang.t('google_maps@client_key_setup_help'),
-            default=_reg.get('google_maps.client_key'),
-        ))
-
-        self.add_widget(_widget.input.Text(
-            uid='setting_server_key',
-            weight=20,
-            label=_lang.t('google_maps@server_key'),
-            help=_lang.t('google_maps@server_key_setup_help'),
-            default=_reg.get('google_maps.server_key'),
+            label=_lang.t('google_maps@api_key'),
+            help=_lang.t('google_maps@api_key_setup_help'),
+            default=_reg.get('google_maps.api_key'),
         ))
 
         super()._on_setup_widgets()
