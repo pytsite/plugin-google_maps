@@ -4,6 +4,10 @@
 ## Changelog
 
 
+### 0.3.5 (2017-09-27)
+Fixed JS code initialization issue.
+
+
 ### 0.3.4 (2017-09-06)
 - Fixed geo coding/decoding errors handling.
 - Added setup notification message.

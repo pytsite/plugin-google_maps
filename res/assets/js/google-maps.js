@@ -288,7 +288,7 @@ define(['jquery', 'assetman'], function ($, assetman) {
         window.pytsiteGoogleMapsReady = true;
     };
 
-    var apiKey = $('meta[name=pytsite-google-maps-client-key]').attr('content');
+    var apiKey = $('meta[name=pytsite-google-maps-api-key]').attr('content');
     if (apiKey) {
         var googleUrl = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&callback=pytsiteGoogleMapsInit';
         $('body').append('<script src="' + googleUrl + '" async defer></script>');
