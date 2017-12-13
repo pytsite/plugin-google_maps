@@ -1,6 +1,7 @@
 """PytSite Google Maps Plugins Event Handlers
 """
-from pytsite import settings as _settings, metatag as _metatag, auth as _auth, router as _router, lang as _lang
+from pytsite import metatag as _metatag, router as _router, lang as _lang, reg as _reg
+from plugins import auth as _auth
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -8,7 +9,7 @@ __license__ = 'MIT'
 
 
 def on_router_dispatch():
-    api_key = _settings.get('google_maps.api_key')
+    api_key = _reg.get('google_maps.api_key')
     if api_key:
         _metatag.t_set('pytsite-google-maps-api-key', api_key)
     else:

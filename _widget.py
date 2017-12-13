@@ -4,7 +4,8 @@ from typing import Union as _Union
 from copy import deepcopy as _deepcopy
 from json import dumps as _json_dumps, loads as _json_loads
 from frozendict import frozendict as _frozendict
-from pytsite import widget as _pytsite_widget, html as _html, geo as _geo, router as _router, validation as _validation
+from pytsite import html as _html, router as _router, validation as _validation
+from plugins import widget as _pytsite_widget, geo as _geo
 from . import _point, _maps, _helpers
 
 __author__ = 'Alexander Shepetko'

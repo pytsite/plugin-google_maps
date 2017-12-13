@@ -1,6 +1,7 @@
 """PytSite Google Maps Plugin Settings Form
 """
-from pytsite import widget as _widget, lang as _lang, settings as _settings, reg as _reg
+from pytsite import lang as _lang, reg as _reg
+from plugins import widget as _widget, settings as _settings
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
