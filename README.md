@@ -4,6 +4,13 @@
 ## Changelog
 
 
+### 0.5 (2017-12-23)
+
+- Added support of Time Zone API.
+- Lots of code refactored.
+- UI-related parts moved to separate plugin.
+
+
 ### 0.4 (2017-12-13)
 
 Support for PytSite-7.0.

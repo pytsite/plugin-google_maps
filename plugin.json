@@ -1,6 +1,6 @@
 {
   "name": "google_maps",
-  "version": "0.4",
+  "version": "0.5",
   "description": {
     "en": "Google Maps",
     "ru": "Карты Google",
@@ -13,8 +13,11 @@
     "url": "https://shepetko.com"
   },
   "requires": {
-    "packages": [],
+    "packages": [
+      "requests"
+    ],
     "plugins": [
+      "font_awesome",
       "permissions"
     ]
   }

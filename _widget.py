@@ -1,16 +1,16 @@
 """PytSite Google Maps Plugin Widgets
 """
+__author__ = 'Alexander Shepetko'
+__email__ = 'a@shepetko.com'
+__license__ = 'MIT'
+
 from typing import Union as _Union
 from copy import deepcopy as _deepcopy
 from json import dumps as _json_dumps, loads as _json_loads
 from frozendict import frozendict as _frozendict
 from pytsite import html as _html, router as _router, validation as _validation
 from plugins import widget as _pytsite_widget, geo as _geo
-from . import _point, _maps, _helpers
-
-__author__ = 'Alexander Shepetko'
-__email__ = 'a@shepetko.com'
-__license__ = 'MIT'
+from . import _types, _maps, _helpers
 
 
 class AddressInput(_pytsite_widget.Abstract):
@@ -128,7 +128,7 @@ class StaticMap(_pytsite_widget.Abstract):
     def __init__(self, uid: str, **kwargs):
         super().__init__(uid, **kwargs)
 
-        self._point = _point.LatLng(kwargs.get('lat', 50.4501), kwargs.get('lng', 30.5234))
+        self._point = _types.Location(kwargs.get('lat', 50.4501), kwargs.get('lng', 30.5234))
         self._zoom = kwargs.get('zoom', 15)
         self._scale = kwargs.get('scale', 1)
         self._markers = kwargs.get('markers', [])

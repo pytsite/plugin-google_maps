@@ -6,42 +6,51 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 
-class GoogleApiKeyNotDefined(Exception):
+class Error(Exception):
     pass
 
 
-class DistanceCalculationError(Exception):
-    pass
+class GoogleApiKeyNotDefined(Error):
+    def __str__(self) -> str:
+        return "Registry key 'google_maps.api_key' is not defined or it is empty"
 
 
-class GoogleApiError(Exception):
-    def __init__(self, api_url: str, request_args: dict, error_content: str):
+class DistanceCalculationError(Error):
+    def __init__(self, google_status: str):
+        self._status = google_status
+
+    def __str__(self) -> str:
+        return 'Calculation status from Google:'.format(self._status)
+
+
+class GoogleApiRequestError(Error):
+    def __init__(self, request_url: str, request_args: dict, error_content: str):
         super().__init__()
 
-        self._api_url = api_url
+        self._request_url = request_url
         self._request_args = request_args
         self._error_content = error_content
 
     def __str__(self) -> str:
         return 'Error while requesting Google API {}, {}: {}' \
-            .format(self._api_url, self._request_args, self._error_content)
+            .format(self._request_url, self._request_args, self._error_content)
 
 
-class GoogleApiZeroResults(GoogleApiError):
+class GoogleApiZeroResults(GoogleApiRequestError):
     pass
 
 
-class GoogleApiOverQueryLimit(GoogleApiError):
+class GoogleApiOverQueryLimit(GoogleApiRequestError):
     pass
 
 
-class GoogleApiRequestDenied(GoogleApiError):
+class GoogleApiRequestDenied(GoogleApiRequestError):
     pass
 
 
-class GoogleApiInvalidRequest(GoogleApiError):
+class GoogleApiInvalidRequest(GoogleApiRequestError):
     pass
 
 
-class GoogleApiUnknownError(GoogleApiError):
+class GoogleApiUnknownError(GoogleApiRequestError):
     pass
