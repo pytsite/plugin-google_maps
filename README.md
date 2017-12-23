@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.5.1 (2017-12-23)
+
+Missing dependency fixed.
+
+
 ### 0.5 (2017-12-23)
 
 - Added support of Time Zone API.
