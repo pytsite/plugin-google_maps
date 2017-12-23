@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.5.4 (2017-12-23)
+
+Missing module of public API added.
+
+
 ### 0.5.3 (2017-12-23)
 
 Final UI-related parts moved to the separate plugin.
