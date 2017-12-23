@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.5.3 (2017-12-23)
+
+Final UI-related parts moved to the separate plugin.
+
+
 ### 0.5.2 (2017-12-23)
 
 Missing dependencies fixed.
@@ -18,7 +23,7 @@ Missing dependency fixed.
 
 - Added support of Time Zone API.
 - Lots of code refactored.
-- UI-related parts moved to separate plugin.
+- UI-related parts moved to the separate plugin.
 
 
 ### 0.4 (2017-12-13)

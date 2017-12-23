@@ -1,6 +1,6 @@
 {
   "name": "google_maps",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": {
     "en": "Google Maps",
     "ru": "Карты Google",
@@ -16,12 +16,6 @@
     "packages": [
       "requests"
     ],
-    "plugins": [
-      "auth",
-      "font_awesome",
-      "permissions",
-      "settings",
-      "widget"
-    ]
+    "plugins": []
   }
 }
