@@ -5,13 +5,14 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 from pytsite import lang as _lang, cache as _cache, util as _util
-from . import _helpers, _types, _travel_mode, _error
+from plugins import geo as _geo
+from . import _helpers, _travel_mode, _error
 
 CACHE_TTL = 86400
 _cache_pool = _cache.create_pool('google_maps.distance')
 
 
-def calculate(origin: _types.Location, destination: _types.Location, mode: str = _travel_mode.DRIVING,
+def calculate(origin: _geo.types.Location, destination: _geo.types.Location, mode: str = _travel_mode.DRIVING,
               language: str = None) -> dict:
     """Calculate distance between two points.
     """

@@ -5,10 +5,10 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 from pytsite import router as _router
-from . import _types
+from plugins import geo as _geo
 
 
-def link(location: _types.Location, query: str = None, zoom: int = 15) -> str:
+def link(location: _geo.types.Location, query: str = None, zoom: int = 15) -> str:
     """Get link to a map.
     """
     if query:

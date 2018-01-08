@@ -6,10 +6,11 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 from time import time as _time
-from . import _helpers, _types
+from plugins import geo as _geo
+from . import _helpers
 
 
-def resolve(location: _types.Location, language: str = None):
+def resolve(location: _geo.types.Location, language: str = None):
     """Resolve a time zone of a location
     """
 
@@ -18,4 +19,4 @@ def resolve(location: _types.Location, language: str = None):
         'timestamp': _time(),
     }
 
-    return _types.TimeZone(_helpers.google_api_request('timezone', args, language))
+    return _geo.types.TimeZone(_helpers.google_api_request('timezone', args, language))

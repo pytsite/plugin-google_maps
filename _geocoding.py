@@ -5,7 +5,8 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 from typing import List as _List
-from . import _types, _helpers
+from plugins import geo as _geo
+from . import _helpers
 
 
 def encode(address: str, components: _List[str] = None, first: bool = True, language: str = None):
@@ -18,17 +19,17 @@ def encode(address: str, components: _List[str] = None, first: bool = True, lang
     r = _helpers.google_api_request('geocode', args, language)['results']
 
     if first:
-        return _types.GeocodingResult(r[0]) if r else None
+        return _geo.types.GeocodingResult(r[0]) if r else None
 
-    return _types.GeocodingResults(r)
+    return _geo.types.GeocodingResults(r)
 
 
-def decode(location: _types.Location, first: bool = True, language: str = None):
+def decode(location: _geo.types.Location, first: bool = True, language: str = None):
     """Decode a location
     """
     r = _helpers.google_api_request('geocode', {'latlng': str(location)}, language)['results']
 
     if first:
-        return _types.GeocodingResult(r[0]) if r else None
+        return _geo.types.GeocodingResult(r[0]) if r else None
 
-    return _types.GeocodingResults(r)
+    return _geo.types.GeocodingResults(r)

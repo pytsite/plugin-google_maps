@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 0.6 (2018-01-08)
+
+Module `types` moved to `geo` plugin.
+
+
 ### 0.5.4 (2017-12-23)
 
 Missing module of public API added.
