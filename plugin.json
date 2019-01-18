@@ -1,6 +1,6 @@
 {
   "name": "google_maps",
-  "version": "0.6",
+  "version": "0.7",
   "description": {
     "en": "Google Maps",
     "ru": "Карты Google",
@@ -8,16 +8,16 @@
   },
   "url": "https://github.com/pytsite/plugin-google_maps",
   "author": {
-    "name": "Alexander Shepetko",
+    "name": "Oleksandr Shepetko",
     "email": "a@shepetko.com",
     "url": "https://shepetko.com"
   },
   "requires": {
-    "packages": [
-      "requests"
-    ],
-    "plugins": [
-      "geo"
-    ]
+    "packages": {
+      "requests": "2.x"
+    },
+    "plugins": {
+      "geo": ">=3.5<4"
+    }
   }
 }
